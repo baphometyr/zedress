@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +9,8 @@ export class AppComponent {
   title = 'zedress';
 
 
-  constructor(public auth: AngularFireAuth)
+  constructor()
   {
   }
 
-  login() {
-    this.auth.signInWithEmailAndPassword("baphometyr.black@gmail.com", "123456");
-  }
-  logout() {
-    this.auth.signOut();
-  }
 }
