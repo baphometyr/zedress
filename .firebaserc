@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "zedress-a97aa": {
+      "hosting": {
+        "zedress": [
+          "zedress-a97aa"
+        ]
+      }
+    }
+  }
+}

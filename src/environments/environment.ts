@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyA7GZhycyuCPL43-gMrncXI7SsO8ogKaAk",
+    authDomain: "zedress-a97aa.firebaseapp.com",
+    databaseURL: "https://zedress-a97aa.firebaseio.com",
+    projectId: "zedress-a97aa",
+    storageBucket: "zedress-a97aa.appspot.com",
+    messagingSenderId: "226081054144",
+    appId: "1:226081054144:web:48e332e22050a8de07bc25",
+    measurementId: "G-578RLHYE85"
+  }
 };
 
 /*
