@@ -1,15 +1,21 @@
-<div class="text-blue-200 bg-primary flex justify-between px-8 py-4">
-    <div class="menu-header">
-        <i class="hover:text-white fas fa-bars icon"></i>
-    </div>
-    <div class="search-header">
-        <i class="hover:text-white fas fa-search icon"></i>
-        <input class="hidden" type="text">
-    </div>
-    <div class="car-header">
-        <i class="hover:text-white fas fa-shopping-cart icon"></i>
-    </div>
-    <div class="user-header">
-        <i routerLink="/login" class="hover:text-white fas fa-user icon"></i>
+<div class="uppercase head-font font-bold mt-4">
+    <div>
+        <div class="text-center">
+            <a href="#">ZEDRESS</a>
+        </div>
+
+        <div class="text-center flex space-around text-gray-600">
+            <div class="px-16 flex-initial">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="flex-auto">
+                <input class="shadow appearance-none border rounded w-full px-3 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Buscar">
+            </div>
+            <div class="px-8 flex-initial">
+                <a routerLink="/login"><i class="fas fa-user"></i></a>
+                <a href=""><i class="fas fa-heart"></i></a>
+                <a href=""><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
     </div>
 </div>

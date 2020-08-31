@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   pass: string = "";
   intent = 0;
 
-  constructor(public auth: AngularFireAuth, private formBuilder: FormBuilder ) { }
+  constructor(public auth: AngularFireAuth, private formBuilder: FormBuilder, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.crearFormulario();
