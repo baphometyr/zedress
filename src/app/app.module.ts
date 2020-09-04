@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
