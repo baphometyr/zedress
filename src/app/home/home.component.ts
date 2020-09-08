@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore'
+import { Banner } from '../Models/Banner';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,13 @@ import { AngularFirestore } from '@angular/fire/firestore'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  banner: any[] = new Array<any>();
+  banner: Banner[] = new Array<Banner>();
 
   constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
-    this.db.collection('HomeBanner').valueChanges().subscribe((req) => {
-      this.banner = req;
+    this.db.collection('ImageBanner').valueChanges().subscribe((req) => {
+      this.banner = req as Banner[];
     })
   }
 

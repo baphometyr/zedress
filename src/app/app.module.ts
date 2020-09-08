@@ -7,12 +7,13 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { NewBannerComponent } from './new-banner/new-banner.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     RegisterComponent,
     HeaderComponent,
     HomeComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    NewBannerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FormsModule
   ],
   providers: [
     AngularFireAuth

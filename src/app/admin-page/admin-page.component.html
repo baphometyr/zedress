@@ -1,5 +1,13 @@
+<!-- PRODUCTOS -->
 <div class="container mx-auto py-6 px-4 mt-8 antialiased sans-serif bg-gray-200 h-screen">
-    <h1 class="text-3xl border-b mb-8">Productos</h1>
+    <div class="flex justify-between mb-8">
+        <h1 class="text-3xl border-b">Productos</h1>
+        <div>
+            <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+            <span class="mr-2">Nuevo Producto</span>
+            </button>
+        </div>
+    </div>
     
     <div class="overflow-x-auto rounded-lg shadow overflow-y-auto relative" [ngClass]="{'long-table': product.length > 7}">
         <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
@@ -60,10 +68,29 @@
                         <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.Stock }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.Stock }}</span>
+                        <div class="flex justify-around text-xl mx-4">
+                            <i class="fas fa-edit text-blue-600 hover:text-blue-700"></i>
+                            <i class="fas fa-minus-circle text-red-700 hover:text-red-800"></i>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+
+<div class="container mx-auto py-6 px-4 mt-8 md:grid md:grid-cols-3">
+    <div class="md:px-2" *ngFor="let item of banner">
+        <img class="hover:opacity-75 my-4 long-radius" [src]="item.Image">
+    </div>
+    
+    <div routerLink="/new-banner" class="flex w-full items-center justify-center">
+        <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide hover:bg-blue-700 hover:text-white uppercase cursor-pointer">
+            <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+            </svg>
+            <span class="mt-2 text-base leading-normal">Nuevo Banner</span>
+        </label>
     </div>
 </div>

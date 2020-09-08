@@ -4,6 +4,8 @@ import { Brand } from '../Models/Brand';
 import { Department } from '../Models/Department';
 import { Size } from '../Models/Size';
 import { Supplier } from '../Models/Supplier';
+import { Banner } from '../Models/Banner';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-admin-page',
@@ -11,31 +13,19 @@ import { Supplier } from '../Models/Supplier';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
-  product: Array<Garment> = new Array<Garment>();
+  product: Garment[] = new Array<Garment>();
+  banner: Banner[] = new Array<Banner>();
 
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
 
   ngOnInit(): void {
-    this.product.push({
-      ID: 1,
-      IDBrand: new Brand(),
-      IDDepartment: new Department(),
-      IDSize: new Size(),
-      IDSupplier: new Supplier(),
-      Name: "Pantalon",
-      Price: 129.2,
-      Stock: 1
-    },
-    {
-      ID: 2,
-      IDBrand: new Brand(),
-      IDDepartment: new Department(),
-      IDSize: new Size(),
-      IDSupplier: new Supplier(),
-      Name: "Blusa",
-      Price: 29.2,
-      Stock: 10
-    });
+    this.db.collection('ImageBanner').valueChanges().subscribe((req) => {
+      this.banner = req as Banner[];
+    })
+
+    this.db.collection('Garment').valueChanges().subscribe((req) => {
+      this.product = req as Garment[];
+    })
   }
 
 }
