@@ -4,7 +4,6 @@ import { Size } from './Size'
 import { Supplier } from './Supplier'
 
 export class Garment{
-    ID: number;
     IDBrand: Brand;
     IDDepartment: Department;
     IDSize: Size;

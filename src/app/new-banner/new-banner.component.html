@@ -8,15 +8,15 @@
                 <!-- Col -->
                 <div
                     class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg shadow-xl relative"
-                    style="background-image: url('{{ imagen }}')">
+                    style="background-image: url('{{ image }}')">
 
-                    <input *ngIf="!imagen" [(ngModel)]="imagen" type="file" multiple class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50">
-                    <div *ngIf="!imagen" class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
-                        <h4>
+                    <input (change)="uploadImage($event)" type="file" multiple class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50">
+                    <div class="text-center p-10 absolute top-0 right-0 left-0 m-auto">
+                        <h4 *ngIf="!image">
                             Arrastra una imagen para subirla
                             <br/>o
                         </h4>
-                        <p class="">Selecciona una</p>
+                        <p *ngIf="!image">Selecciona una</p>
                     </div>
                 </div>
                 <!-- Col -->
@@ -44,7 +44,7 @@
                             />
                         </div>
                         <div class="mb-6 text-center">
-                            <button
+                            <button (click)="upBanner()"
                                 class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                                 type="button"
                             >
@@ -58,3 +58,8 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="imagePercent>0" class="mt-16 shadow w-full bg-grey-light text-center container mx-auto px-16">
+    <div class="bg-blue-600 text-xs leading-none py-1 text-center text-white" [style.width]="prog">{{ imagePercent }}%</div>
+</div>
+<p *ngIf="flagUpload" class="text-center">Banner subido correctamente</p>

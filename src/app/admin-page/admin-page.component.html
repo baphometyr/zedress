@@ -3,7 +3,7 @@
     <div class="flex justify-between mb-8">
         <h1 class="text-3xl border-b">Productos</h1>
         <div>
-            <button class="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+            <button routerLink="/new-product" class="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
             <span class="mr-2">Nuevo Producto</span>
             </button>
         </div>
@@ -50,27 +50,27 @@
                         </label>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.IDBrand.Name }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.IDBrand.Name }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.IDDepartment.Name }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.IDDepartment.Name }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.IDSupplier.Name }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.IDSupplier.Name }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.Name }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.Name }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.Price }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.Price }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
-                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.Stock }}</span>
+                        <span class="text-gray-700 px-6 py-3 flex items-center"> {{ item.data.Stock }}</span>
                     </td>
                     <td class="border-dashed border-t border-gray-200">
                         <div class="flex justify-around text-xl mx-4">
-                            <i class="fas fa-edit text-blue-600 hover:text-blue-700"></i>
-                            <i class="fas fa-minus-circle text-red-700 hover:text-red-800"></i>
+                            <i routerLink="/edit-product" (click)="setProduct(item)" class="fas fa-edit text-blue-600 hover:text-blue-700"></i>
+                            <i (click)="deleteProduct(item.ID)" class="fas fa-minus-circle text-red-700 hover:text-red-800"></i>
                         </div>
                     </td>
                 </tr>
@@ -82,7 +82,7 @@
 
 <div class="container mx-auto py-6 px-4 mt-8 md:grid md:grid-cols-3">
     <div class="md:px-2" *ngFor="let item of banner">
-        <img class="hover:opacity-75 my-4 long-radius" [src]="item.Image">
+        <img class="hover:opacity-75 my-4 long-radius" [src]="item.data.Image">
     </div>
     
     <div routerLink="/new-banner" class="flex w-full items-center justify-center">

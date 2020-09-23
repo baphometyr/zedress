@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
@@ -14,6 +13,9 @@ import { HomeComponent } from './home/home.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NewBannerComponent } from './new-banner/new-banner.component';
+import { NewProductComponent } from './new-product/new-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { NewBannerComponent } from './new-banner/new-banner.component';
     HomeComponent,
     AdminPageComponent,
     NewBannerComponent,
+    NewProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { NewBannerComponent } from './new-banner/new-banner.component';
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     NgxSpinnerModule,
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule,
   ],
   providers: [
     AngularFireAuth
