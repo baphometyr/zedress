@@ -15,7 +15,9 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NewBannerComponent } from './new-banner/new-banner.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { AngularFireStorageModule } from '@angular/fire/storage'
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ProductComponent } from './product/product.component';
+import { DepartmentComponent } from './department/department.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage'
     NewBannerComponent,
     NewProductComponent,
     EditProductComponent,
+    ProductComponent,
+    DepartmentComponent,
   ],
   imports: [
     BrowserModule,

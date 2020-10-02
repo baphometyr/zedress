@@ -9,6 +9,7 @@ export class Garment{
     IDSize: Size;
     IDSupplier: Supplier;
     Name: string;
+    Description: string;
     Price: number;
     Stock: number;
 }

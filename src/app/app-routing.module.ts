@@ -7,6 +7,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NewBannerComponent } from './new-banner/new-banner.component';
 import { NewProductComponent } from './new-product/new-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { ProductComponent } from './product/product.component';
+import { DepartmentComponent } from './department/department.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'admin', component: AdminPageComponent },
   { path: 'new-banner', component: NewBannerComponent },
   { path: 'new-product', component: NewProductComponent },
-  { path: 'edit-product', component: EditProductComponent}
+  { path: 'edit-product', component: EditProductComponent},
+  { path: 'product/:IDProduct', component: ProductComponent},
+  { path: ':department', component: DepartmentComponent}
 ];
 
 @NgModule({

@@ -6,7 +6,6 @@ import { Size } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { Supplier } from '../Models/Supplier';
 import { Department } from '../Models/Department';
 import { Garment } from '../Models/Garment';
-import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-new-product',
@@ -27,22 +26,22 @@ export class NewProductComponent implements OnInit {
 
     this.db.getBrandsData().subscribe((req) => {
       this.brands = req as Brand[];
-      this.newProductForm.controls["name"].setValue(this.brands[0]?.Name);
+      this.newProductForm.controls["brand"].setValue(this.brands[0]?.Name);
     });
 
     this.db.getDepartmentsData().subscribe((req) => {
       this.departments = req as Department[];
-      this.newProductForm.controls["Brand"].setValue(this.departments[0]?.Name);
+      this.newProductForm.controls["department"].setValue(this.departments[0]?.Name);
     })
 
     this.db.getSizesData().subscribe((req) => {
       this.sizes = req as Size[];
-      this.newProductForm.controls["Brand"].setValue(this.sizes[0]);
+      this.newProductForm.controls["size"].setValue(this.sizes[0]);
     })
 
     this.db.getSuppliersData().subscribe((req) => {
       this.suppliers = req as Supplier[];
-      this.newProductForm.controls["Brand"].setValue(this.suppliers[0]?.Name);
+      this.newProductForm.controls["supplier"].setValue(this.suppliers[0]?.Name);
     })
   }
 
@@ -53,6 +52,7 @@ export class NewProductComponent implements OnInit {
       size: [''],
       supplier: [''],
       name: ['', Validators.required],
+      description: ['', Validators.required],
       price: [''],
       stock: ['', Validators.compose([Validators.min(0), Validators.max(100)])]
     })
@@ -65,6 +65,7 @@ export class NewProductComponent implements OnInit {
       IDDepartment : this.newProductForm.controls["department"].value,
       IDSize : this.newProductForm.controls["size"].value,
       IDSupplier : this.newProductForm.controls["supplier"].value,
+      Description: this.newProductForm.controls["description"].value,
       Stock : 10,
       Price: 10.99
     };

@@ -21,13 +21,19 @@ export class FstoreService {
   getBrands = () => this.firestore.collection('Brand').snapshotChanges();
   getGarment = () => this.firestore.collection('Garment').snapshotChanges();
   getBanner = () => this.firestore.collection('ImageBanner').snapshotChanges();
+
+  getGarmentByDepartment = (departmentName) => this.firestore.collection('Garment', ref => ref.where('IDDepartment', '==', '/Department/' + departmentName)).snapshotChanges();
   
   // CREATE
   addProduct = (product:Garment) => this.firestore.collection("Garment").add(product);
   addBanner = (banner:Banner) => this.firestore.collection("ImageBanner").add(banner)
-  
+
+  // UPDATE
+  updateProduct = (product:General<Garment>, newProduct) => this.firestore.collection("Garment").doc(product.ID).set(newProduct, { merge: true})
+
   // REMOVE
   deleteProduct = (ID) => {
     this.firestore.collection("Garment").doc(ID).delete();
+
   }
 }

@@ -16,6 +16,7 @@ export class NewBannerComponent implements OnInit {
   prog:string;
   file;
   flagUpload:boolean = false;
+  url:string = '';
 
   constructor(private formBuilder: FormBuilder, private storage: AngularFireStorage, private db:FstoreService) { }
 
@@ -43,23 +44,33 @@ export class NewBannerComponent implements OnInit {
 
   upBanner(){
     try{
-      let filepath = 'banner/test.jpg';
+      let today = new Date().getTime().toString();
+      let filepath = 'banner/' + today;
       let ref = this.storage.ref(filepath);
       let task = ref.put(this.file);
       task.percentageChanges().subscribe((res) => {
         this.imagePercent = parseInt(res.toString());
         this.prog = res + "%";
       })
-      
-      let banner:Banner = {
-        Title: this.newBannerForm.controls["Title"].value,
-        Subtitle: this.newBannerForm.controls["Subtitle"].value,
-        Image: 'referencia a storage'
-      };
-  
-      this.db.addBanner(banner).then((res) =>{
-        this.flagUpload = true;      
-      });
+
+      task.then(() => {
+        ref.getDownloadURL().subscribe((res) => {
+          this.url = res;
+          
+          let banner:Banner = {
+            Title: this.newBannerForm.controls["Title"].value,
+            Subtitle: this.newBannerForm.controls["Subtitle"].value,
+            Image: this.url
+          };
+          
+          this.db.addBanner(banner).then(() =>{
+            this.flagUpload = true;      
+            this.newBannerForm.reset();
+            this.image = '';
+          });
+        })
+      })
+
     }
     catch{}
   }

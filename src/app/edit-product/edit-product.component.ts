@@ -3,7 +3,7 @@ import { FstoreService } from '../services/fstore.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Brand } from '../Models/Brand';
 import { Department } from '../Models/Department';
-import { Size } from 'ngx-spinner/lib/ngx-spinner.enum';
+import { Size } from '../Models/Size';
 import { Supplier } from '../Models/Supplier';
 import { Garment } from '../Models/Garment';
 import { ProductService } from '../services/product.service';
@@ -53,9 +53,34 @@ export class EditProductComponent implements OnInit {
       size: [this.product.data.IDSize.Name],
       supplier: [this.product.data.IDSupplier.Name],
       name: [this.product.data.Name, Validators.required],
+      description: [this.product.data.Description, Validators.required],
       price: [this.product.data.Price],
       stock: [this.product.data.Stock, Validators.compose([Validators.min(0), Validators.max(100)])]
     })
+  }
+
+  updateProduct(){
+    let newProduct:any = {
+      IDBrand: '/brand/CONCATENAR_ID',
+      IDDepartment: '/Department/CONCATENAR_ID',
+      IDSize: '/IDSize/CONCATENAR_ID',
+      IDSupplier: '/Supplier/CONCATENAR_ID',
+      Name: "chiquilla que te pasa???",
+      Description: "descripcion",
+      Stock: 123,
+      Price:0
+    };
+    // this.product.data = {
+    //   IDBrand: {Name: "prueba"},
+    //   IDDepartment: {Name: "prueba"},
+    //   IDSize: {Name: "Prueba", Label:"prueba"},
+    //   IDSupplier: {Name: "Prueba"},
+    //   Name: "chiquilla que te pasa???",
+    //   Stock: 123,
+    //   Price:0
+    // }
+
+    this.db.updateProduct(this.product, newProduct);
   }
 
   isDirty = (controlName:string) => this.editProductForm.controls[controlName].dirty;
